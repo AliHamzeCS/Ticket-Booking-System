@@ -3,7 +3,8 @@ init()
 
 import os 
 import time 
-import ShowMovies
+import Movies
+import Seats
 
 # Sleep Function
 def sleep():
@@ -81,7 +82,7 @@ while True:
             )
             
             try:
-                sm_choice = int(input('\nChoice : '))
+                m_choice = int(input('\nChoice : '))
             
             except ValueError:
                 print('\nError: Please enter a number.')
@@ -89,28 +90,28 @@ while True:
                 clear_screen()
                 continue
                 
-            if  sm_choice == 1 :
+            if  m_choice == 1 :
                 
                 clear__and_sleap()
-                ShowMovies.Show_All_Movies()
+                Movies.Show_All_Movies()
                 clear__and_sleap()
                 	
-            elif sm_choice == 2 :
+            elif m_choice == 2 :
                 clear__and_sleap()
-                ShowMovies.Search_Movies()
+                Movies.Search_Movies()
                 clear__and_sleap()
                 
-            elif sm_choice == 3 :
+            elif m_choice == 3 :
                 clear__and_sleap()
-                ShowMovies.Movie_Details()
-                clear__and_sleap()
-                	
-            elif sm_choice == 4 :
-                clear__and_sleap()
-                ShowMovies.Show_Movie_Schedule()
+                Movies.Movie_Details()
                 clear__and_sleap()
                 	
-            elif sm_choice == 5 :
+            elif m_choice == 4 :
+                clear__and_sleap()
+                Movies.Show_Movie_Schedule()
+                clear__and_sleap()
+                	
+            elif m_choice == 5 :
                 
                 clear_screen()
                 sleep()
@@ -139,25 +140,25 @@ while True:
                     if fm_choice == 1:
                         
                         clear__and_sleap()
-                        ShowMovies.Filter_By_Genre()
+                        Movies.Filter_By_Genre()
                         clear__and_sleap()
                         
                     elif fm_choice == 2:
                         
                         clear__and_sleap()
-                        ShowMovies.Filter_By_Rating()
+                        Movies.Filter_By_Rating()
                         clear__and_sleap()
                         
                     elif fm_choice == 3:
                         
                         clear__and_sleap()
-                        ShowMovies.Filter_By_Price()
+                        Movies.Filter_By_Price()
                         clear__and_sleap()
                         
                     elif fm_choice == 4:
                         
                         clear__and_sleap()
-                        ShowMovies.Filter_By_Language()
+                        Movies.Filter_By_Language()
                         clear__and_sleap()
                         
                     elif fm_choice == 5:
@@ -165,12 +166,65 @@ while True:
                         break
                         
                 	
-            elif sm_choice == 6 :
+            elif m_choice == 6 :
                 reset_screen()
                 break
                 
     elif choice == 2:
-        pass
+        clear_screen()  
+        sleep()
+                
+        while True:
+                    
+            print(f'{Fore.WHITE}-Seats-{Style.RESET_ALL}\n')
+                    
+            View_Options(
+                        'All Seats',
+                        'Available Seats',
+                        'Booked Seats',
+                        'Select Seat',
+                        'Check Seat',
+                        'Back'
+                    )
+            
+            try:
+                s_choice = int(input('\nChoice : '))
+                        
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+            
+            if s_choice == 1:
+                clear__and_sleap()
+                Seats.Show_Seat_Map()              
+                clear__and_sleap()
+            
+            elif s_choice == 2:
+                clear__and_sleap()
+                Seats.Show_Available_Seat()           
+                clear__and_sleap()
+            
+            elif s_choice == 3:
+                clear__and_sleap()
+                Seats.Show_Booked_Seat()            
+                clear__and_sleap() 
+            
+            elif s_choice == 4:
+                clear__and_sleap()
+                Seats.Select_Seat()              
+                clear__and_sleap()
+            
+            elif s_choice == 5:
+                clear__and_sleap()
+                Seats.Check_Seat()            
+                clear__and_sleap() 
+            
+            elif s_choice == 6:
+                reset_screen()
+                break
+            
         
     elif choice == 3:
         pass

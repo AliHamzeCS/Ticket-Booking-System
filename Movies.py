@@ -1,5 +1,11 @@
 from Utils import decorator_func
+from colorama import Fore, Style, init
+init()
+import os
+import time
+import random
 
+Bookings = {}
 Movies = {
     1: {
         'ID': 1,
@@ -10,7 +16,47 @@ Movies = {
         'Price': 10,
         'Language': 'English',
         'Age Rating': 'PG-13',
-        'Showtimes': ['14:00', '17:00', '20:00']
+
+        'Showtimes': {
+            '14:00': {
+                'A1': 'Booked', 'A2': 'Available', 'A3': 'Available',
+                'A4': 'Booked', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Booked', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Booked',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Booked', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Booked',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Booked', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '17:00': {
+                'A1': 'Available', 'A2': 'Available', 'A3': 'Booked',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Booked', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Booked', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Booked', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Booked', 'D6': 'Available',
+                'E1': 'Booked', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '20:00': {
+                'A1': 'Available', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Booked', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Booked',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Booked', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Booked',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Booked', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Booked',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            }
+        }
     },
 
     2: {
@@ -22,7 +68,47 @@ Movies = {
         'Price': 9,
         'Language': 'English',
         'Age Rating': 'PG-13',
-        'Showtimes': ['13:00', '16:00', '21:00']
+
+        'Showtimes': {
+            '13:00': {
+                'A1': 'Booked', 'A2': 'Available', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Booked', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Booked',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Booked', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Booked', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Booked',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Booked', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '16:00': {
+                'A1': 'Available', 'A2': 'Available', 'A3': 'Available',
+                'A4': 'Booked', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Booked', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Booked', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Booked', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Booked', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Booked',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '21:00': {
+                'A1': 'Booked', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Booked', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Booked',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Booked', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Booked',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Booked', 'E6': 'Available'
+            }
+        }
     },
 
     3: {
@@ -34,7 +120,47 @@ Movies = {
         'Price': 11,
         'Language': 'English',
         'Age Rating': 'PG-13',
-        'Showtimes': ['14:00', '18:00', '21:00']
+
+        'Showtimes': {
+            '14:00': {
+                'A1': 'Available', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Booked', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Booked',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Booked', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Booked',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Booked', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Booked', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '18:00': {
+                'A1': 'Booked', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Booked',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Booked', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Booked',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Booked', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Booked',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '21:00': {
+                'A1': 'Available', 'A2': 'Available', 'A3': 'Booked',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Booked', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Booked', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Booked', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Booked',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Booked', 'D5': 'Booked', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Booked', 'E5': 'Available', 'E6': 'Available'
+            }
+        }
     },
 
     4: {
@@ -46,7 +172,47 @@ Movies = {
         'Price': 12,
         'Language': 'English',
         'Age Rating': 'PG-13',
-        'Showtimes': ['13:30', '16:00', '20:00']
+
+        'Showtimes': {
+            '13:30': {
+                'A1': 'Available', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Booked',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Booked', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Booked', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Booked', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Booked', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Booked',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '16:00': {
+                'A1': 'Booked', 'A2': 'Available', 'A3': 'Available',
+                'A4': 'Booked', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Booked', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Booked',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Booked', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Booked',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Booked', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '20:00': {
+                'A1': 'Available', 'A2': 'Available', 'A3': 'Booked',
+                'A4': 'Available', 'A5': 'Booked', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Booked', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Booked', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Booked',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Booked', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Booked', 'E6': 'Available'
+            }
+        }
     },
 
     5: {
@@ -58,9 +224,50 @@ Movies = {
         'Price': 9,
         'Language': 'English',
         'Age Rating': 'R',
-        'Showtimes': ['13:30', '17:30', '22:00']
+
+        'Showtimes': {
+            '13:30': {
+                'A1': 'Booked', 'A2': 'Available', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Booked', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Booked', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Available', 'B6': 'Booked',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Booked', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Booked',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Booked', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '17:30': {
+                'A1': 'Available', 'A2': 'Booked', 'A3': 'Available',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Booked',
+                'B1': 'Booked', 'B2': 'Available', 'B3': 'Available',
+                'B4': 'Available', 'B5': 'Booked', 'B6': 'Available',
+                'C1': 'Available', 'C2': 'Available', 'C3': 'Booked',
+                'C4': 'Available', 'C5': 'Available', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Booked', 'D3': 'Available',
+                'D4': 'Available', 'D5': 'Available', 'D6': 'Available',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Booked',
+                'E4': 'Available', 'E5': 'Available', 'E6': 'Available'
+            },
+
+            '22:00': {
+                'A1': 'Available', 'A2': 'Available', 'A3': 'Booked',
+                'A4': 'Available', 'A5': 'Available', 'A6': 'Available',
+                'B1': 'Available', 'B2': 'Available', 'B3': 'Booked',
+                'B4': 'Booked', 'B5': 'Available', 'B6': 'Available',
+                'C1': 'Booked', 'C2': 'Available', 'C3': 'Available',
+                'C4': 'Available', 'C5': 'Booked', 'C6': 'Available',
+                'D1': 'Available', 'D2': 'Available', 'D3': 'Available',
+                'D4': 'Booked', 'D5': 'Available', 'D6': 'Booked',
+                'E1': 'Available', 'E2': 'Available', 'E3': 'Available',
+                'E4': 'Available', 'E5': 'Booked', 'E6': 'Available'
+            }
+        }
     }
 }
+
 
 @decorator_func('Show All Movies')
 # Show All Movies

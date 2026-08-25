@@ -1,23 +1,14 @@
 # 🎟️ Ticket Booking System
 
-A console-based Ticket Booking System built with Python.
+A Python-based Cinema Ticket Booking System built as a console application.
 
-This project is designed to practice Python programming concepts such as:
-- Dictionaries
-- Functions
-- Loops
-- Conditions
-- Exception Handling
-- Modules
-- Random Number Generation
-- Colorama
-- Data management
+This project is designed to practice Python programming concepts by building a complete ticket booking workflow using dictionaries, functions, modules, decorators, loops, conditions, exception handling, and data management.
 
 ---
 
-## 🚀 Current Version
+## 🚀 Version
 
-**v0.3.0**
+Current Version: **v0.4.0**
 
 ---
 
@@ -40,22 +31,65 @@ This project is designed to practice Python programming concepts such as:
 - Show Booked Seats
 - Select Seat
 - Check Seat
-- Seat status is maintained separately for each movie and showtime
 
 ### 🎟️ Book Ticket
 - New Booking
-- Select Movie
-- Select Showtime
-- Select Seat
-- Enter Customer Information
-- Generate a unique Booking ID
-- Display Booking Summary
-- Confirm Booking
-- Update selected seat to `Booked` after confirmation
+  - Select Movie
+  - Select Showtime
+  - Select Seat
+  - Customer Information
+  - Generate Random Booking ID
+  - Booking Summary
+  - Confirm Booking
+  - Automatically mark the selected seat as Booked
+
+### 📋 Manage Bookings
+- Show All Bookings
+- Show My Bookings
+- Booking Details
+- Cancel Booking
+- Modify Booking
+  - Change Showtime
+  - Change Seat
+  - Change Customer Name
+  - Change Phone Number
+
+### 🔎 Search
+- Search Movie
+
+> More search features will be added in future versions.
 
 ---
 
-## 📂 Project Structure
+## 🧠 Python Concepts Used
+
+This project currently uses:
+
+- Variables
+- Strings
+- Integers
+- Lists
+- Dictionaries
+- Nested Dictionaries
+- `if / elif / else`
+- `for` loops
+- `while` loops
+- Functions
+- Modules
+- Imports
+- Exception Handling
+- `try / except`
+- Decorators
+- `random`
+- `os`
+- `time`
+- Colorama
+- Dictionary operations
+- Input validation
+
+---
+
+## 📁 Project Structure
 
 ```text
 Ticket-Booking-System/
@@ -64,4 +98,7 @@ Ticket-Booking-System/
 ├── Movies.py
 ├── Seats.py
 ├── Bookings.py
-└── README.md
+├── BookingManager.py
+├── Utils.py
+├── README.md
+└── .gitignore

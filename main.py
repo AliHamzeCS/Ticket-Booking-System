@@ -6,6 +6,7 @@ import time
 import Movies
 import Seats
 import Bookings
+import BookingManager
 
 # Sleep Function
 def sleep():
@@ -226,6 +227,10 @@ while True:
                 reset_screen()
                 break
             
+            else:
+                print('❌ Invalid choice.')
+                    
+            
         
     elif choice == 3:
         
@@ -234,7 +239,68 @@ while True:
         clear__and_sleap() 
                        
     elif choice == 4:
-        pass
+
+        clear_screen()
+        sleep()
+
+        while True:
+
+            print(f'{Fore.WHITE}-Manage Bookings-{Style.RESET_ALL}\n')
+
+            View_Options(
+                'All Bookings',
+                'My Bookings',
+                'Booking Details',
+                'Cancel',
+                'Modify',
+                'Back'
+            )
+
+            try:
+                b_choice = int(input('\nChoice : '))
+
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+
+            if b_choice == 1:
+
+                clear__and_sleap()
+                BookingManager.Show_All_Bookings()
+                clear__and_sleap()
+
+            elif b_choice == 2:
+
+                clear__and_sleap()
+                BookingManager.Show_My_Bookings()
+                clear__and_sleap()
+
+            elif b_choice == 3:
+                clear__and_sleap()
+                BookingManager.Booking_Details()
+                clear__and_sleap()
+                
+
+            elif b_choice == 4:
+                
+                clear__and_sleap()
+                BookingManager.Cancel_Booking()
+                clear__and_sleap()
+                                
+            elif b_choice == 5:
+                clear__and_sleap()
+                BookingManager.Modify_Booking()
+                clear__and_sleap()
+
+            elif b_choice == 6:
+                reset_screen()
+                break
+
+            else:
+                print('❌ Invalid choice.')
+        
         
     elif choice == 5:
         pass

@@ -5,6 +5,7 @@ import os
 import time 
 import Movies
 import Seats
+import Bookings
 
 # Sleep Function
 def sleep():
@@ -227,8 +228,11 @@ while True:
             
         
     elif choice == 3:
-        pass
         
+        clear__and_sleap()
+        Bookings.New_Booking()           
+        clear__and_sleap() 
+                       
     elif choice == 4:
         pass
         

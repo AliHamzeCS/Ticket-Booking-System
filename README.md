@@ -1,95 +1,78 @@
 # 🎟️ Ticket Booking System
 
-A Python-based Cinema Ticket Booking System built as a console application.
+A console-based Ticket Booking System built with Python.
 
-This project is designed to practice Python programming concepts by building a complete ticket booking workflow using dictionaries, functions, modules, decorators, loops, conditions, exception handling, and data management.
+This project allows users to browse movies, check seat availability, make bookings, manage bookings, and store booking data using JSON.
 
 ---
 
-## 🚀 Version
+## 📌 Version
 
-Current Version: **v0.4.0**
+**Current Version: v0.5.0**
 
 ---
 
 ## ✨ Features
 
 ### 🎬 Movies
-- Show All Movies
-- Search Movies
-- Movie Details
-- Show Movie Schedule
-- Filter Movies
-  - Filter by Genre
-  - Filter by Rating
-  - Filter by Price
-  - Filter by Language
+- Show all movies
+- Search movies
+- Show movie details
+- Show movie schedules
+- Filter movies by:
+  - Genre
+  - Rating
+  - Price
+  - Language
 
 ### 💺 Seats
-- Show All Seats
-- Show Available Seats
-- Show Booked Seats
-- Select Seat
-- Check Seat
+- Show complete seat map
+- Show available seats
+- Show booked seats
+- Select a seat
+- Check seat status
 
 ### 🎟️ Book Ticket
-- New Booking
-  - Select Movie
-  - Select Showtime
-  - Select Seat
-  - Customer Information
-  - Generate Random Booking ID
-  - Booking Summary
-  - Confirm Booking
-  - Automatically mark the selected seat as Booked
+- Create a new booking
+- Select movie
+- Select showtime
+- Select seat
+- Enter customer information
+- Generate unique Booking ID
+- Confirm booking
+- Automatically mark the selected seat as booked
 
 ### 📋 Manage Bookings
-- Show All Bookings
-- Show My Bookings
-- Booking Details
-- Cancel Booking
-- Modify Booking
-  - Change Showtime
-  - Change Seat
-  - Change Customer Name
-  - Change Phone Number
+- Show all bookings
+- Show customer's bookings
+- Show booking details
+- Cancel booking
+- Modify booking
+  - Change showtime
+  - Change seat
+  - Change customer name
+  - Change phone number
 
-### 🔎 Search
-- Search Movie
+### 💾 Data Persistence
+Booking information is stored in a JSON file.
 
-> More search features will be added in future versions.
+The system includes:
 
----
+- `Load_Bookings()`
+- `Dump_Bookings()`
+- `Add_Booking()`
 
-## 🧠 Python Concepts Used
+This allows booking data to remain available after closing and reopening the program.
 
-This project currently uses:
-
-- Variables
-- Strings
-- Integers
-- Lists
-- Dictionaries
-- Nested Dictionaries
-- `if / elif / else`
-- `for` loops
-- `while` loops
-- Functions
-- Modules
-- Imports
-- Exception Handling
-- `try / except`
-- Decorators
-- `random`
-- `os`
-- `time`
-- Colorama
-- Dictionary operations
-- Input validation
+### 🎨 User Interface
+- Colored terminal output using Colorama
+- Menu-based navigation
+- Screen clearing
+- Simple and organized console interface
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure
 
 ```text
 Ticket-Booking-System/
@@ -98,7 +81,8 @@ Ticket-Booking-System/
 ├── Movies.py
 ├── Seats.py
 ├── Bookings.py
+├── BookingsHistory.py
 ├── BookingManager.py
 ├── Utils.py
-├── README.md
-└── .gitignore
+├── bookings.json
+└── README.md

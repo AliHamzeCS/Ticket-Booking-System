@@ -5,18 +5,23 @@ from Utils import decorator_func
 import random
 import os 
 import time
+import BookingsHistory
+from random import randint
+from CustomersHistory import Load_Customers
+from CustomersHistory import Dump_Customers
+
+
 
 def reset_screen():
     os.system('clear')
     time.sleep(1)
 
-Bookings = {}
-
+Bookings = BookingsHistory.Load_Bookings()
 
 # New Booking
 @decorator_func('🎟️  New Booking')
 def New_Booking():
-    
+    customers = Load_Customers()
 
     try:
         movie_ID = int(input('\nEnter Movie ID: '))
@@ -108,10 +113,66 @@ def New_Booking():
     
     reset_screen()
 
-    print('\n👤 CUSTOMER INFORMATION')
+    print('\n👤 CUSTOMER INFORMATION' , end="\n\n")
 
-    customer_name = input('\nEnter Customer Name: ').title()
-    phone_number = input('Enter phone number: ')
+    
+    print("1. Yes")
+    print("2. No\n")  
+    
+    try :
+        qs = int(input("Do you have a Customer ID? "))
+    
+    except ValueError :
+        print("Enter only the number of choice")
+        return
+    
+    if qs == 1:
+        try :
+            cust_id = int(input("Enter Customer ID: "))
+            
+        except ValueError :
+            print("Enter only the Customer ID.")
+            return
+        
+        customer_found = False
+        if cust_id in customers:
+            customer_found = True
+            
+        if not customer_found:
+            print("❌ Customer ID not found.")
+            return
+        
+        customer_name = customers[cust_id]['Customer Name']
+        phone_number = customers[cust_id]['Customer Phone']
+    
+    elif qs == 2:
+        
+        cust_name = input("Enter Customer Name : ")
+        cust_phone = input("Enter Customer Phone : ")
+        cust_id = randint(999, 10000)
+        
+        while True:
+            if cust_id not in customers:
+                customers[cust_id] = {
+                        'Customer Name': cust_name,
+                        'Customer Phone': cust_phone
+                    }
+                Dump_Customers(customers)
+                break
+        
+                
+            else:
+                cust_id = randint(999, 10000)
+                
+        print("✅ Customer created successfully!" , end="\n\n")
+        
+        print(f"🆔 Customer ID: {cust_id}")
+        print(f"👤 Name: {cust_name}")
+        print(f"📱 Phone: {cust_phone}")
+    
+    else :
+        print("Enter only (1 or 2)")
+        return
     
     while True:
         booking_id = random.randint(1000, 100000)
@@ -139,8 +200,9 @@ def New_Booking():
     confirm_booking = input('Confirm Booking? (Y/N): ').lower()
 
     if confirm_booking == 'y':
-        Bookings[booking_id] = {
+        booking_data = {
             'Booking ID': booking_id,
+            'Customer ID': cust_id,
             'Movie ID': movie_ID,
             'Movie Name': movie_name,
             'Showtime': selected_time,
@@ -148,8 +210,8 @@ def New_Booking():
             'Customer Name': customer_name,
             'Phone': phone_number,
             'Price': price,
-            'Status': 'Confirmed'
-        }
+            'Status': 'Confirmed'}
+        BookingsHistory.Add_Booking(Bookings, booking_id, booking_data)
         Movies[indexx]['Showtimes'][selected_time][seat_id] = 'Booked'
         print(f'\n✅ Booking confirmed successfully!\n🎫 Booking ID: {booking_id}')
         

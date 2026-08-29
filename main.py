@@ -7,6 +7,8 @@ import Movies
 import Seats
 import Bookings
 import BookingManager
+import Customer
+import Search
 
 # Sleep Function
 def sleep():
@@ -46,9 +48,8 @@ while True:
         'Show Movies',
         'Available Seats',
         'Book Ticket',
-        'Cancel Ticket',
+        'Manage Bookings',
         'Search Booking',
-        'My Bookings',
         'Customer',
         'Statistics',
         'Settings',
@@ -303,10 +304,127 @@ while True:
         
         
     elif choice == 5:
-        pass
+
+        clear_screen()
+        sleep()
+
+        while True:
+
+            print(f'{Fore.WHITE}-Search Booking-{Style.RESET_ALL}\n')
+
+            View_Options(
+                'Search Movie',
+                'Search Booking',
+                'Search Booking ID',
+                'Search Phone',
+                'Back'
+            )
+
+            try:
+                sb_choice = int(input('\nChoice : '))
+
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+
+            if sb_choice == 1:
+
+                clear__and_sleap()
+                Search.search_movie()
+                clear__and_sleap()
+
+            elif sb_choice == 2:
+
+                clear__and_sleap()
+                Search.search_bookings()
+                clear__and_sleap()
+
+            elif sb_choice == 3:
+
+                clear__and_sleap()
+                Search.search_by_booking_id()
+                clear__and_sleap()
+
+            elif sb_choice == 4:
+
+                clear__and_sleap()
+                Search.search_by_phone()
+                clear__and_sleap()
+
+            elif sb_choice == 5:
+
+                reset_screen()
+                break
+
+            else:
+                print('❌ Invalid choice.')
         
     elif choice == 6:
-        pass 
+
+        clear_screen()
+        sleep()
+
+        while True:
+
+            print(f'{Fore.WHITE}-Customer-{Style.RESET_ALL}\n')
+
+            View_Options(
+                'Add Customer',
+                'Show Customers',
+                'Update Customer',
+                'Delete Customer',
+                'Customer Bookings',
+                'Back'
+            )
+
+            try:
+                c_choice = int(input('\nChoice : '))
+
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+
+            if c_choice == 1:
+
+                clear__and_sleap()
+                Customer.add_customer()
+                clear__and_sleap()
+
+            elif c_choice == 2:
+
+                clear__and_sleap()
+                Customer.show_customers()
+                clear__and_sleap()
+
+            elif c_choice == 3:
+
+                clear__and_sleap()
+                Customer.update_customers()
+                clear__and_sleap()
+
+            elif c_choice == 4:
+
+                clear__and_sleap()
+                Customer.delete_customer()
+                clear__and_sleap()
+
+            elif c_choice == 5:
+
+                clear__and_sleap()
+                Customer.Customer_Bookings()
+                clear__and_sleap()
+
+            elif c_choice == 6:
+
+                reset_screen()
+                break
+
+            else:
+                print('❌ Invalid choice.')
     
     elif choice == 7:
         pass 
@@ -318,9 +436,6 @@ while True:
         pass 
         
     elif choice == 10:
-        pass 
-        
-    elif choice == 11:
         reset_screen()
         print('Thank you for using our system !')
         print('Goodbye !')

@@ -9,6 +9,7 @@ import Bookings
 import BookingManager
 import Customer
 import Search
+import Statistics
 
 # Sleep Function
 def sleep():
@@ -427,8 +428,77 @@ while True:
                 print('❌ Invalid choice.')
     
     elif choice == 7:
-        pass 
-        
+
+        clear_screen()
+        sleep()
+
+        while True:
+
+            print(f'{Fore.WHITE}-Statistics-{Style.RESET_ALL}\n')
+
+            View_Options(
+                'Movies',
+                'Customers',
+                'Bookings',
+                'Seats',
+                'Revenue',
+                'Popular Movie',
+                'Back'
+            )
+
+            try:
+                st_choice = int(input('\nChoice : '))
+
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+
+            if st_choice == 1:
+
+                clear__and_sleap()
+                Statistics.movies_statistics()
+                clear__and_sleap()
+
+            elif st_choice == 2:
+
+                clear__and_sleap()
+                Statistics.customers_statistics()
+                clear__and_sleap()
+
+            elif st_choice == 3:
+
+                clear__and_sleap()
+                Statistics.bookings_statistics()
+                clear__and_sleap()
+
+            elif st_choice == 4:
+
+                clear__and_sleap()
+                Statistics.seats_statistics()
+                clear__and_sleap()
+
+            elif st_choice == 5:
+
+                clear__and_sleap()
+                Statistics.revenue_statistics()
+                clear__and_sleap()
+
+            elif st_choice == 6:
+
+                clear__and_sleap()
+                Statistics.popular_movie()
+                clear__and_sleap()
+
+            elif st_choice == 7:
+
+                reset_screen()
+                break
+
+            else:
+                print('❌ Invalid choice.') 
+            
     elif choice == 8:
         pass 
         

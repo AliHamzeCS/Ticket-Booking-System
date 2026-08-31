@@ -4,6 +4,12 @@ init()
 import os
 import time
 import random
+import SettingsHistory
+  
+settings = SettingsHistory.Load_Settings()
+
+Delay = settings['Screen Delay']
+Currency = settings['Currency']
 
 Bookings = {}
 Movies = {
@@ -422,7 +428,7 @@ def Filter_By_Rating():
         if Movies[index]['Rating'] >= rate_of_movie:
             if not found:
                 found = True
-                print('✅ Movies Found:') # طبعتها مرة وحدة بس
+                print('✅ Movies Found:')
             print(f"- {Movies[index]['Name']} {Movies[index]['Rating']}/10")
 
     if not found:
@@ -446,7 +452,7 @@ def Filter_By_Price():
 		if Movies[index]['Price'] <= price_of_movie :
 			if not found :
 				found = True
-			print(f"- {Movies[index]['Name']}	{Movies[index]['Price']}$") 
+			print(f"- {Movies[index]['Name']}	{Movies[index]['Price']}{Currency}") 
 	if not found :
 			print('❌ No movies found under or equal to this price.')
    

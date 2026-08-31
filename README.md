@@ -1,10 +1,10 @@
 # 🎟️ Ticket Booking System
 
-A Python-based Ticket Booking System built as a learning project to practice modular programming, functions, decorators, JSON file handling, exception handling, data management, and statistics.
+A Python-based Ticket Booking System built as a learning project to practice modular programming, functions, decorators, JSON file handling, exception handling, data management, and basic statistics.
 
 ## 📌 Version
 
-v0.7.0
+v0.*8.0
 
 ## 🚀 Features
 
@@ -112,14 +112,27 @@ v0.7.0
 - Most Popular Movie
 - Total Confirmed Bookings for the Movie
 
+### ⚙️ Settings
+
+- Change Currency
+- Change Screen Delay
+- Show Current Settings
+- Reset Settings
+- Settings stored using JSON
+- Currency is used dynamically when displaying prices
+- Screen Delay is used dynamically by the application
+
 ## 💾 JSON Data Storage
 
-Customer and booking data are stored persistently using JSON files.
+The project uses JSON files to store data persistently between program runs.
+
+### JSON Files
 
 - `customers.json`
 - `bookings.json`
+- `settings.json`
 
-The application loads the latest customer and booking data when performing relevant operations and statistics.
+The application loads the latest customer, booking, and settings data when performing relevant operations.
 
 ## 🔗 Customer ↔ Booking Integration
 
@@ -155,6 +168,22 @@ The Statistics menu is integrated into `main.py` and provides information about:
 
 Statistics are calculated dynamically from the current movie, customer, and booking data.
 
+## ⚙️ Settings Integration
+
+The Settings system allows the user to customize application behavior.
+
+### Currency
+
+The currency can be changed from the Settings menu and is used when displaying prices and revenue.
+
+### Screen Delay
+
+The screen delay can be changed from the Settings menu and is used by the application when clearing and refreshing screens.
+
+Settings are stored persistently in:
+
+`settings.json`
+
 ## 🧩 Project Structure
 
 Ticket-Booking-System/
@@ -181,13 +210,19 @@ Ticket-Booking-System/
 
 ├── Statistics.py
 
+├── Settings.py
+
+├── SettingsHistory.py
+
 ├── Utils.py
 
 │
 
 ├── customers.json
 
-└── bookings.json
+├── bookings.json
+
+└── settings.json
 
 ## 🛠️ Technologies & Concepts
 
@@ -204,7 +239,7 @@ Ticket-Booking-System/
 - Sets
 - Loops
 - Conditional Statements
-- zip()
+- `zip()`
 - Regular Expressions
 - File Handling
 - Data Persistence
@@ -214,64 +249,8 @@ Ticket-Booking-System/
 
 Clone the repository, open the project directory, and run:
 
+```bash
 python3 main.py
-
-Install the required external package if needed:
-
-pip install colorama
-
-## 🧪 Data
-
-The project uses JSON files to keep customer and booking data between program runs.
-
-For public repositories, use demo data only in JSON files and avoid committing real customer names or phone numbers.
-
-## 📈 Version History
-
-### v0.7.0
-
-- Added Statistics System
-- Added Movies Statistics
-- Added Customers Statistics
-- Added Bookings Statistics
-- Added Seats Statistics
-- Added Revenue Statistics
-- Added Popular Movie Statistics
-- Added Statistics submenu to `main.py`
-- Added Total Movies calculation
-- Added Average Movie Rating
-- Added Highest Movie Rating
-- Added Lowest Movie Rating
-- Added Average Movie Price
-- Added Total Genres calculation
-- Added Customers With Bookings calculation
-- Added Customers Without Bookings calculation
-- Added Confirmed Bookings calculation
-- Added Cancelled Bookings calculation
-- Added Available Seats calculation
-- Added Booked Seats calculation
-- Added Total Revenue calculation
-- Added Average Ticket Price calculation
-- Added Most Popular Movie calculation
-- Improved compatibility with bookings that may not contain Customer ID
-
-### v0.6.0
-
-- Added Customer Management System
-- Added Customer JSON storage
-- Added Customer ID
-- Connected Customers with Bookings
-- Added Customer Bookings
-- Added Search System
-- Added Search by Booking ID
-- Added Search by Phone
-- Improved Booking data structure
-- Improved JSON loading for booking/customer IDs
-- Added additional input validation
-
-### v0.5.0
-
-Previous stable version before Customer and Search integration.
 
 ## 👨‍💻 Author
 

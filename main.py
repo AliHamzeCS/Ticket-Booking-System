@@ -10,10 +10,17 @@ import BookingManager
 import Customer
 import Search
 import Statistics
+import Settings
+import SettingsHistory
+  
+settings = SettingsHistory.Load_Settings()
+
+Delay = settings['Screen Delay']
+Currency = settings['Currency']
 
 # Sleep Function
 def sleep():
-    time.sleep(1)
+    time.sleep(Delay)
 
 # Clear Screen Function    
 def clear_screen():
@@ -500,7 +507,62 @@ while True:
                 print('❌ Invalid choice.') 
             
     elif choice == 8:
-        pass 
+
+        clear_screen()
+        sleep()
+
+        while True:
+
+            print(f'{Fore.WHITE}-Settings-{Style.RESET_ALL}\n')
+
+            View_Options(
+                'Change Currency',
+                'Change Screen Delay',
+                'Show Current Settings',
+                'Reset Settings',
+                'Back'
+            )
+
+            try:
+                settings_choice = int(input('\nChoice : '))
+
+            except ValueError:
+                print('\nError: Please enter a number.')
+                sleep()
+                clear_screen()
+                continue
+
+            if settings_choice == 1:
+
+                clear__and_sleap()
+                Settings.change_currency()
+                clear__and_sleap()
+
+            elif settings_choice == 2:
+
+                clear__and_sleap()
+                Settings.change_screen_delay()
+                clear__and_sleap()
+
+            elif settings_choice == 3:
+
+                clear__and_sleap()
+                Settings.show_settings()
+                clear__and_sleap()
+
+            elif settings_choice == 4:
+
+                clear__and_sleap()
+                Settings.reset_settings()
+                clear__and_sleap()
+
+            elif settings_choice == 5:
+
+                reset_screen()
+                break
+
+            else:
+                print('❌ Invalid choice.')
         
     elif choice == 9:
         pass 

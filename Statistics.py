@@ -2,6 +2,11 @@ from Movies import Movies
 from Utils import decorator_func
 from CustomersHistory import Load_Customers
 from BookingsHistory import Load_Bookings
+import SettingsHistory
+
+settings = SettingsHistory.Load_Settings()
+
+Currency = settings['Currency']
 
 
 # Movies Statistics
@@ -51,7 +56,7 @@ def movies_statistics():
     print(f"⭐ Average Rating : {average_rate}")
     print(f"🏆 Highest Rating : {highest_rated}")
     print(f"📉 Lowest Rating : {lowest_rated}")
-    print(f"💰 Average Price : {average_price}\n")
+    print(f"💰 Average Price : {average_price}{Currency}\n")
     print("=" * 25)
 
 
@@ -167,9 +172,9 @@ def revenue_statistics():
     print('💰 REVENUE STATISTICS')
     print('=' * 25)
 
-    print(f'\n💰 Total Revenue     : ${total_revenue}')
+    print(f'\n💰 Total Revenue     : {Currency}{total_revenue}')
     print(f'🎟️ Confirmed Tickets : {confirmed_tickets}')
-    print(f'💵 Average Price     : ${average_price:.2f}\n')
+    print(f'💵 Average Price     : {Currency}{average_price:.2f}\n')
 
     print('=' * 25)
 

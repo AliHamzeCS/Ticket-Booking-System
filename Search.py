@@ -1,6 +1,11 @@
 from BookingsHistory import Load_Bookings
 from Movies import Movies
 from Utils import decorator_func
+import SettingsHistory
+
+settings = SettingsHistory.Load_Settings()
+
+Currency = settings['Currency']
 
 
 # Search Movie
@@ -20,6 +25,9 @@ def search_movie():
             for key, value in Movies[index].items():
                 if key == 'Showtimes':
                     break
+
+                elif key == 'Price':
+                    print(f"{key} : {value}{Currency}")
 
                 else:
                     print(f"{key} : {value}")
@@ -47,7 +55,12 @@ def search_bookings():
             print('=' * 25, end='\n\n')
 
             for key, value in Bookings[ID].items():
-                print(f"{key} : {value}")
+
+                if key == 'Price':
+                    print(f"{key} : {value}{Currency}")
+
+                else:
+                    print(f"{key} : {value}")
 
             print('=' * 25, end='\n\n')
 
@@ -75,7 +88,12 @@ def search_by_booking_id():
         print('=' * 25, end='\n\n')
 
         for key, value in Bookings[ID].items():
-            print(f"{key} : {value}")
+
+            if key == 'Price':
+                print(f"{key} : {value}{Currency}")
+
+            else:
+                print(f"{key} : {value}")
 
         print('=' * 25, end='\n\n')
 
@@ -97,7 +115,12 @@ def search_by_phone():
             print('=' * 25, end='\n\n')
 
             for key, value in Bookings[ID].items():
-                print(f"{key} : {value}")
+
+                if key == 'Price':
+                    print(f"{key} : {value}{Currency}")
+
+                else:
+                    print(f"{key} : {value}")
 
             print('=' * 25, end='\n\n')
 

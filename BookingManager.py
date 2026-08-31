@@ -3,6 +3,12 @@ from Utils import decorator_func
 from colorama import Fore, Style, init
 init()
 from Movies import Movies
+import SettingsHistory
+  
+settings = SettingsHistory.Load_Settings()
+
+Delay = settings['Screen Delay']
+Currency = settings['Currency']
 
 # Show All Bookings
 @decorator_func('Show All Bookings')
@@ -22,7 +28,7 @@ def Show_All_Bookings():
         print(f'💺 Seat       : {booking["Seat"]}')
         print(f'👤 Customer   : {booking["Customer Name"]}')
         print(f'📱 Phone      : {booking["Phone"]}')
-        print(f'💰 Price      : {booking["Price"]}$')
+        print(f'💰 Price      : {booking["Price"]}{Currency}')
         print(f'📌 Status     : {booking["Status"]}')
 
         print('-' * 35)
@@ -54,7 +60,7 @@ def Show_My_Bookings():
             print(f'💺 Seat       : {booking["Seat"]}')
             print(f'👤 Customer   : {booking["Customer Name"]}')
             print(f'📱 Phone      : {booking["Phone"]}')
-            print(f'💰 Price      : {booking["Price"]}$')
+            print(f'💰 Price      : {booking["Price"]}{Currency}')
             print(f'📌 Status     : {booking["Status"]}')
 
             print('-' * 35)
@@ -96,7 +102,7 @@ def Booking_Details():
     print(f'💺 Seat       : {booking["Seat"]}')
     print(f'👤 Customer   : {booking["Customer Name"]}')
     print(f'📱 Phone      : {booking["Phone"]}')
-    print(f'💰 Price      : {booking["Price"]}$')
+    print(f'💰 Price      : {booking["Price"]}{Currency}')
     print(f'📌 Status     : {booking["Status"]}')
 
     print('=' * 35)
@@ -135,7 +141,7 @@ def Cancel_Booking():
     print(f'💺 Seat       : {booking["Seat"]}')
     print(f'👤 Customer   : {booking["Customer Name"]}')
     print(f'📱 Phone      : {booking["Phone"]}')
-    print(f'💰 Price      : {booking["Price"]}$')
+    print(f'💰 Price      : {booking["Price"]}{Currency}')
     print(f'📌 Status     : {booking["Status"]}')
 
     print('=' * 35)
@@ -192,7 +198,7 @@ def Modify_Booking():
     print(f"💺 Seat       : {booking['Seat']}")
     print(f"👤 Customer   : {booking['Customer Name']}")
     print(f"📱 Phone      : {booking['Phone']}")
-    print(f"💰 Price      : {booking['Price']}$")
+    print(f"💰 Price      : {booking['Price']}{Currency}")
     print(f"📌 Status     : {booking['Status']}")
 
     print('\n' + '=' * 30)

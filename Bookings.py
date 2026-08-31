@@ -9,12 +9,17 @@ import BookingsHistory
 from random import randint
 from CustomersHistory import Load_Customers
 from CustomersHistory import Dump_Customers
+import SettingsHistory
 
+settings = SettingsHistory.Load_Settings()
+
+Currency = settings['Currency']
+Delay = settings['Screen Delay']
 
 
 def reset_screen():
     os.system('clear')
-    time.sleep(1)
+    time.sleep(Delay)
 
 Bookings = BookingsHistory.Load_Bookings()
 
@@ -36,7 +41,7 @@ def New_Booking():
         if movie_ID == Movies[index]['ID']:
             found = True
             print(f"\n🎬 Movie : {Movies[index]['Name']}")
-            print(f"💰 Price : {Movies[index]['Price']}$")
+            print(f"💰 Price : {Movies[index]['Price']}{Currency}")
             break
 
     if not found:
@@ -193,7 +198,7 @@ def New_Booking():
     print(f"💺 Seat : {seat_id}\n")
     print(f"👤 Customer : {customer_name}")
     print(f"📱 Phone : {phone_number}\n")
-    print(f"💰 Price : {price}$\n")
+    print(f"💰 Price : {price}{Currency}\n")
 
     print('='*20, end = '\n\n')
 

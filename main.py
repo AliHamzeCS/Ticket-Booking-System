@@ -12,6 +12,7 @@ import Search
 import Statistics
 import Settings
 import SettingsHistory
+import Help
   
 settings = SettingsHistory.Load_Settings()
 
@@ -565,7 +566,9 @@ while True:
                 print('❌ Invalid choice.')
         
     elif choice == 9:
-        pass 
+        clear__and_sleap()
+        Help.help_system()
+        clear__and_sleap()
         
     elif choice == 10:
         reset_screen()

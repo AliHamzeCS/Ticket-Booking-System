@@ -1,10 +1,10 @@
 # 🎟️ Ticket Booking System
 
-A Python-based Ticket Booking System built as a learning project to practice modular programming, functions, decorators, JSON file handling, exception handling, data management, and basic statistics.
+A Python-based Ticket Booking System built as a learning project to practice modular programming, functions, decorators, JSON file handling, exception handling, data management, statistics, and configurable application settings.
 
-## 📌 Version
+## 📌 Current Version
 
-v0.*8.0
+v0.9.0
 
 ## 🚀 Features
 
@@ -118,9 +118,23 @@ v0.*8.0
 - Change Screen Delay
 - Show Current Settings
 - Reset Settings
-- Settings stored using JSON
-- Currency is used dynamically when displaying prices
-- Screen Delay is used dynamically by the application
+- Persistent settings using JSON
+- Dynamic Currency display
+- Dynamic Screen Delay
+
+### 🆘 Help
+
+The Help system provides users with information about the main sections of the application.
+
+- Movies Help
+- Seats Help
+- Booking Help
+- Manage Bookings Help
+- Search Help
+- Customer Help
+- Statistics Help
+- Settings Help
+- Exit Information
 
 ## 💾 JSON Data Storage
 
@@ -155,9 +169,9 @@ This allows the system to retrieve bookings belonging to a specific customer and
 
 ## 📊 Statistics Integration
 
-Version 0.7.0 introduces a complete Statistics system.
+The Statistics system provides dynamically calculated information based on the current application data.
 
-The Statistics menu is integrated into `main.py` and provides information about:
+Statistics include:
 
 - Movies
 - Customers
@@ -166,23 +180,27 @@ The Statistics menu is integrated into `main.py` and provides information about:
 - Revenue
 - Popular Movies
 
-Statistics are calculated dynamically from the current movie, customer, and booking data.
-
 ## ⚙️ Settings Integration
 
 The Settings system allows the user to customize application behavior.
 
-### Currency
+### 💰 Currency
 
 The currency can be changed from the Settings menu and is used when displaying prices and revenue.
 
-### Screen Delay
+### ⏱️ Screen Delay
 
-The screen delay can be changed from the Settings menu and is used by the application when clearing and refreshing screens.
+The screen delay can be changed from the Settings menu and controls the delay used when refreshing screens.
 
 Settings are stored persistently in:
 
 `settings.json`
+
+## 🆘 Help System
+
+Version 0.9.0 introduces a Help system integrated into `main.py`.
+
+The Help section explains the purpose of the main application sections and gives users a quick overview of how the system works.
 
 ## 🧩 Project Structure
 
@@ -214,6 +232,8 @@ Ticket-Booking-System/
 
 ├── SettingsHistory.py
 
+├── Help.py
+
 ├── Utils.py
 
 │
@@ -244,6 +264,7 @@ Ticket-Booking-System/
 - File Handling
 - Data Persistence
 - Basic Data Analysis
+- Modular Programming
 
 ## ▶️ How to Run
 
@@ -251,11 +272,3 @@ Clone the repository, open the project directory, and run:
 
 ```bash
 python3 main.py
-
-## 👨‍💻 Author
-
-Ali Hamze
-
-## 📄 License
-
-This project is created for learning and educational purposes.
